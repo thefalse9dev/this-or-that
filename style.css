@@ -1,0 +1,276 @@
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+/* ---------- Screens ---------- */
+.screen {
+  display: none;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  padding: 40px 36px;
+  max-width: 520px;
+  width: 90%;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Typography ---------- */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 18px 0 8px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 12px 28px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Login buttons */
+.login-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 14px 40px;
+  border-radius: 12px;
+}
+
+/* Menu buttons */
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.menu-buttons button {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+.logout-btn {
+  background: #e74c3c !important;
+  color: #fff !important;
+  margin-top: 10px;
+}
+
+/* ---------- Create Flashcard ---------- */
+#create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#create-form label {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#create-form input {
+  padding: 10px 14px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#create-form input:focus {
+  border-color: #667eea;
+}
+
+#create-form button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  margin-top: 6px;
+}
+
+#flashcard-list {
+  text-align: left;
+  margin-top: 16px;
+}
+
+#cards-ul {
+  list-style: none;
+  padding: 0;
+}
+
+#cards-ul li {
+  background: #f0f0f5;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+#cards-ul li .delete-btn {
+  background: #e74c3c;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+/* ---------- Play Screen ---------- */
+#card-counter {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.card-choices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.choice-btn {
+  flex: 1 1 160px;
+  max-width: 200px;
+  padding: 20px 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 14px;
+  color: #fff;
+}
+
+.choice-a {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+.choice-b {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+.or-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #888;
+}
+
+/* ---------- Answers Table ---------- */
+#answers-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#answers-table th,
+#answers-table td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+#answers-table th {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+}
+
+#answers-table tbody tr:nth-child(even) {
+  background: #f6f6fb;
+}
+
+/* ---------- Utility ---------- */
+.hidden {
+  display: none !important;
+}
+
+.back-btn {
+  margin-top: 24px;
+  background: #ddd;
+  color: #333;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .screen {
+    padding: 28px 18px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .login-btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+
+  .choice-btn {
+    flex: 1 1 120px;
+    padding: 16px 10px;
+    font-size: 1rem;
+  }
+}

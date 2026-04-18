@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>This or That</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Welcome / Login Screen -->
+  <div id="welcome-screen" class="screen active">
+    <h1>This or That 🎴</h1>
+    <p>Who's playing?</p>
+    <div class="login-buttons">
+      <button class="login-btn" data-user="sai" onclick="login('sai')">Sai</button>
+      <button class="login-btn" data-user="lavu" onclick="login('lavu')">Lavu</button>
+    </div>
+  </div>
+
+  <!-- Menu Screen -->
+  <div id="menu-screen" class="screen">
+    <h1>Hey, <span id="username-display"></span>! 👋</h1>
+    <div class="menu-buttons">
+      <button onclick="showScreen('create-screen')">Create Flashcard</button>
+      <button onclick="startPlay()">Play</button>
+      <button onclick="showAnswers()">View Answers</button>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- Create Flashcard Screen -->
+  <div id="create-screen" class="screen">
+    <h2>Create a Flashcard ✏️</h2>
+    <form id="create-form" onsubmit="createFlashcard(event)">
+      <label for="option-a">Option A</label>
+      <input type="text" id="option-a" placeholder="e.g. Pizza" required />
+      <label for="option-b">Option B</label>
+      <input type="text" id="option-b" placeholder="e.g. Burger" required />
+      <button type="submit">Add Flashcard</button>
+    </form>
+    <div id="flashcard-list">
+      <h3>Existing Flashcards</h3>
+      <ul id="cards-ul"></ul>
+    </div>
+    <button class="back-btn" onclick="showScreen('menu-screen')">← Back to Menu</button>
+  </div>
+
+  <!-- Play Screen -->
+  <div id="play-screen" class="screen">
+    <h2>This or That? 🤔</h2>
+    <div id="play-area">
+      <p id="no-cards-msg" class="hidden">No flashcards to play! Create some first.</p>
+      <div id="card-container" class="hidden">
+        <span id="card-counter"></span>
+        <div class="card-choices">
+          <button class="choice-btn choice-a" onclick="pickChoice('A')">
+            <span id="choice-a-text"></span>
+          </button>
+          <span class="or-text">or</span>
+          <button class="choice-btn choice-b" onclick="pickChoice('B')">
+            <span id="choice-b-text"></span>
+          </button>
+        </div>
+      </div>
+      <p id="play-done-msg" class="hidden">All done! 🎉 Go view answers to see what you both picked.</p>
+    </div>
+    <button class="back-btn" onclick="showScreen('menu-screen')">← Back to Menu</button>
+  </div>
+
+  <!-- View Answers Screen -->
+  <div id="answers-screen" class="screen">
+    <h2>Answers 📋</h2>
+    <div id="answers-table-container">
+      <p id="no-answers-msg" class="hidden">No answers yet. Play the game first!</p>
+      <table id="answers-table" class="hidden">
+        <thead>
+          <tr>
+            <th>This or That</th>
+            <th>Sai</th>
+            <th>Lavu</th>
+          </tr>
+        </thead>
+        <tbody id="answers-tbody"></tbody>
+      </table>
+    </div>
+    <button class="back-btn" onclick="showScreen('menu-screen')">← Back to Menu</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
