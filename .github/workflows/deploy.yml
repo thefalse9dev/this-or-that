@@ -28,7 +28,7 @@ jobs:
           echo '{"cname":null}' | gh api repos/${{ github.repository }}/pages \
             --method PUT \
             --input - \
-            --silent || true
+            --silent || echo 'Warning: Failed to remove custom domain'
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
